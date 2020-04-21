@@ -58,7 +58,7 @@ CREATE TEMPORARY EXTERNAL TABLE worldwidebank.us_customers_temp(
  longitude double)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
-LOCATION 's3a://{PREFIX}-cdp-bucket/worldwidebank/us_customers'
+LOCATION 's3a://{PREFIX}-cdp-bucket/worldwidebank/us_customers/'
 tblproperties("skip.header.line.count"="1");
 
 
@@ -164,7 +164,7 @@ ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ',' ESCAPED BY '"'
 -- LINES TERMINATED BY '\n' 
 STORED AS TEXTFILE
-LOCATION 's3a://{PREFIX}-cdp-bucket/worldwidebank/ww_customers'
+LOCATION 's3a://{PREFIX}-cdp-bucket/worldwidebank/ww_customers/'
 tblproperties("skip.header.line.count"="1");
 
 
@@ -277,7 +277,7 @@ CREATE TEMPORARY EXTERNAL TABLE worldwidebank.eu_countries_temp(
   region string)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
-LOCATION 's3a://{PREFIX}-cdp-bucket/worldwidebank/eu_countries';
+LOCATION 's3a://{PREFIX}-cdp-bucket/worldwidebank/eu_countries/';
 
 DROP TABLE IF EXISTS worldwidebank.eu_countries;
 
@@ -304,7 +304,7 @@ CREATE TEMPORARY EXTERNAL TABLE  finance.tax_2015_temp(
   local_tax double)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
-LOCATION 's3a://{PREFIX}-cdp-bucket/worldwidebank/tax_2015';
+LOCATION 's3a://{PREFIX}-cdp-bucket/worldwidebank/tax_2015/';
 
 
 DROP TABLE IF EXISTS finance.tax_2015;
@@ -340,7 +340,7 @@ CREATE TEMPORARY EXTERNAL TABLE cost_savings.claim_savings_temp(
 `longitude` double)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
-LOCATION 's3a://{PREFIX}-cdp-bucket/worldwidebank/claim_savings';
+LOCATION 's3a://{PREFIX}-cdp-bucket/worldwidebank/claim_savings/';
 
 
 
@@ -388,7 +388,7 @@ CREATE TEMPORARY EXTERNAL TABLE claim.provider_summary_temp(
 `averagemedicarepayments` decimal(10,2))
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
-LOCATION 's3a://{PREFIX}-cdp-bucket/worldwidebank/provider_summary';
+LOCATION 's3a://{PREFIX}-cdp-bucket/worldwidebank/provider_summary/';
 
 DROP TABLE IF EXISTS claim.provider_summary;
 
