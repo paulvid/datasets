@@ -161,9 +161,7 @@ CREATE EXTERNAL TABLE worldwidebank.ww_customers_temp(
   latitude double,
   longitude double)
 ROW FORMAT DELIMITED 
-FIELDS TERMINATED BY ',' ESCAPED BY '"'
--- LINES TERMINATED BY '\n' 
-STORED AS TEXTFILE
+FIELDS TERMINATED BY ',' STORED AS TEXTFILE
 LOCATION 's3a://{PREFIX}-cdp-bucket/worldwidebank/ww_customers/'
 tblproperties("skip.header.line.count"="1");
 
