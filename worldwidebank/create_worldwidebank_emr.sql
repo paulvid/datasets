@@ -189,33 +189,3 @@ ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
 LOCATION 's3a://{PREFIX}-cdp-bucket/worldwidebank/provider_summary/';
 
-DROP VIEW IF EXISTS claim.claims_view;
-
-
-CREATE VIEW claim.claims_view AS 
-select `claim_savings`.`reportdate`, 
-`claim_savings`.`name`, 
-`claim_savings`.`sequenceid`, 
-`claim_savings`.`claimid`, 
-`claim_savings`.`costsavings`, 
-`claim_savings`.`eligibilitycode`, 
-`claim_savings`.`latitude`, 
-`claim_savings`.`longitude` 
-from `cost_savings`.`claim_savings`;
-
-
-DROP TABLE IF EXISTS claim.prov_view ;
-
-CREATE VIEW claim.prov_view AS 
-select `provider_summary`.`providerid`, 
-`provider_summary`.`providername`, 
-`provider_summary`.`providerstreetaddress`, 
-`provider_summary`.`providercity`, 
-`provider_summary`.`providerstate`, 
-`provider_summary`.`providerzip`, 
-`provider_summary`.`providerreferralregion`, 
-`provider_summary`.`totaldischarges`, 
-`provider_summary`.`averagecoveredcharges`, 
-`provider_summary`.`averagetotalpayments`, 
-`provider_summary`.`averagemedicarepayments` 
-from `claim`.`provider_summary`;
