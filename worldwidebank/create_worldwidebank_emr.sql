@@ -16,7 +16,7 @@ use worldwidebank;
 
 DROP TABLE IF EXISTS worldwidebank.us_customers;
 
-CREATE TEMPORARY EXTERNAL TABLE worldwidebank.us_customers(
+CREATE  EXTERNAL TABLE worldwidebank.us_customers(
  number string,
  gender string,
  title string,
@@ -120,7 +120,7 @@ tblproperties("skip.header.line.count"="1");
 
 DROP TABLE IF EXISTS worldwidebank.eu_countries;
 
-CREATE TEMPORARY EXTERNAL TABLE worldwidebank.eu_countries(
+CREATE EXTERNAL TABLE worldwidebank.eu_countries(
   countryname string,
   countrycode string,
   region string)
@@ -135,7 +135,7 @@ use finance;
 
 DROP TABLE IF EXISTS finance.tax_2015;
 
-CREATE TEMPORARY EXTERNAL TABLE  finance.tax_2015(
+CREATE EXTERNAL TABLE  finance.tax_2015(
   ssn string,
   fed_tax double,
   state_tax double,
@@ -149,7 +149,7 @@ use cost_savings;
 
 DROP TABLE IF EXISTS cost_savings.claim_savings;
 
-CREATE TEMPORARY EXTERNAL TABLE cost_savings.claim_savings(
+CREATE  EXTERNAL TABLE cost_savings.claim_savings(
 `reportdate` date,
 `name` string,
 `sequenceid` int,
@@ -173,7 +173,7 @@ use claim;
 
 DROP TABLE IF EXISTS claim.provider_summary;
 
-CREATE TEMPORARY EXTERNAL TABLE claim.provider_summary(
+CREATE  EXTERNAL TABLE claim.provider_summary(
 `providerid` string,
 `providername` string,
 `providerstreetaddress` string,
