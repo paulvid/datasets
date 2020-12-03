@@ -39,7 +39,7 @@ CREATE EXTERNAL TABLE if not exists worldwidebank.employees_ext(
  height int)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
-LOCATION '/user/viz_user/vizbank/raw/employees/'
+LOCATION 's3a://pvi-e2e-cdp-bucket/raw/employees/'
 tblproperties("skip.header.line.count"="1");
 
 
@@ -77,9 +77,14 @@ CREATE EXTERNAL TABLE if not exists worldwidebank.locations_ext(
     STNAME string,
     UNINUM string,
     ZIP int)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+
+WITH SERDEPROPERTIES (
+   "separatorChar" = "\,",
+   "quoteChar"     = "\""
+)
 STORED AS TEXTFILE
-LOCATION '/user/viz_user/vizbank/raw/locations/'
+LOCATION 's3a://pvi-e2e-cdp-bucket/raw/locations/'
 tblproperties("skip.header.line.count"="1");
 
 CREATE EXTERNAL TABLE if not exists worldwidebank.covid_cases_ext(
@@ -95,9 +100,14 @@ CREATE EXTERNAL TABLE if not exists worldwidebank.covid_cases_ext(
     Recovered  string,
     Active  string,
     Combined_Key  string)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+
+WITH SERDEPROPERTIES (
+   "separatorChar" = "\,",
+   "quoteChar"     = "\""
+)
 STORED AS TEXTFILE
-LOCATION '/user/viz_user/vizbank/raw/covid_cases/'
+LOCATION 's3://nyl-demo-cdp-bucket/warehouse/tablespace/external/hive/nyl-demo-hive-replication/warehouse/tablespace/external/hive/worldwidebank.db/covid_cases/'
 tblproperties("skip.header.line.count"="1");
 
 
@@ -114,9 +124,14 @@ CREATE EXTERNAL TABLE if not exists worldwidebank.us_geocodes_by_county_ext(
     decommissioned string,
     estimated_population string,
     notes string)
-ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+
+WITH SERDEPROPERTIES (
+   "separatorChar" = "\,",
+   "quoteChar"     = "\""
+)
 STORED AS TEXTFILE
-LOCATION '/user/viz_user/vizbank/raw/us_geocodes_by_county/'
+LOCATION 's3://nyl-demo-cdp-bucket/warehouse/tablespace/external/hive/nyl-demo-hive-replication/warehouse/tablespace/external/hive/worldwidebank.db/us_geocodes_by_county/'
 tblproperties("skip.header.line.count"="1");
 
 
